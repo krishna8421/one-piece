@@ -1,11 +1,9 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import data from "../data/till-818.json";
-import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const [selected, setSelected] = useState(1);
-  const router = useRouter();
 
   useEffect(() => {
     const lastSelected = localStorage.getItem("selected");
@@ -25,7 +23,7 @@ const Home: NextPage = () => {
               setSelected(episodeNum);
               if (window)
                 localStorage.setItem("selected", episodeNum.toString());
-              router.push(value as string);
+              window.open(value as string, "_ blank");
             }}
             className={`m-2 h-10 w-10 flex text-white cursor-pointer justify-center items-center rounded ${
               episodeNum === selected ? "bg-indigo-700" : "bg-indigo-400"
